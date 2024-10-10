@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slots</title>
+  <link rel="stylesheet" href="slots.css">
+</head>
+<body onload="init()">
+  <a href="index.html" class="back">
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="54"  height="54"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="backArrow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
+  </a>
+  <div class="slotsBalance"></div>
+  <div class="main">
+    <div class="main-in main-top">
+      <div class="time-slots slots-past">
+        <div class="slotPast1">2</div>
+        <div class="slotPast2"></div>
+        <div class="slotPast3"></div>
+      </div>
+      <div class="slots">
+        <div class="slot1">🍎</div>
+        <div class="slot2">🍎</div>
+        <div class="slot3">🍎</div>
+      </div>
+      <div class="time-slots slots-future">
+        <div class="slotFuture1"></div>
+        <div class="slotFuture2"></div>
+        <div class="slotFuture3"></div>
+      </div>
+      <div class="main-in main-bottom">
+        <div class="bet">
+          <button class="betBtn btnMinus">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="60"  height="60"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+          </button>
+          <div class="mainInput">$000</div>
+          <button class="betBtn btnPlus">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="60"  height="60"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+          </button>
+        </div>
+        <button class="playBtn">Play</button>
+      </div>
+    </div>
+  </div>
+  <div class="betLog">0</div>
+</body>
+<script src="slots.js"></script>
+</html>
