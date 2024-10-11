@@ -8,6 +8,9 @@ window.addEventListener('storage', event => {
 function init() {
   const localStorageKey = 'balance'; // Ключ для хранения значения в localStorage
   let balanceValue;
+  if (!localStorage.getItem('balance')) {
+    localStorage.setItem('balance', '1000');
+  }
 
   if (typeof(Storage) !== "undefined") {
       balanceValue = localStorage.getItem(localStorageKey);
