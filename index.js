@@ -4,13 +4,13 @@ window.addEventListener('storage', event => {
   balance1.innerText = localStorage.getItem('balance');
 });
 
-let balanceValue;
+
 function init() {
-  if (!localStorage.getItem('balance')) {
-    localStorage.setItem('balance', '500');
+  let balanceValue;
+  if (localStorage.getItem('balance') == NaN || localStorage.getItem('balance') == null) {
+    localStorage.setItem('balance', '0');
   }
   const localStorageKey = 'balance'; // Ключ для хранения значения в localStorage
-  let balanceValue;
 
   if (typeof(Storage) !== "undefined") {
     balanceValue = localStorage.getItem(localStorageKey);

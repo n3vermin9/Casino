@@ -5,7 +5,6 @@ const balance = document.querySelector('.balance')
 const balance1 = document.querySelector('.balance1')
 const back = document.querySelector('.back')
 
-
 let balik = parseInt(balance.innerText)
 
 function addToBalance(value) {
