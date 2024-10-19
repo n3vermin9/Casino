@@ -9,38 +9,16 @@ const btnMinusMines = document.querySelector('.btnMinusMines')
 
 
 let setMineCount = 3
-let chances = []
 
 bigCount.textContent = setMineCount
 
 
-// Add the makeMines function
-function makeMines() {
-  for (let i = 1; i <= 25; i++) { // Change the loop condition to <= 25
-    let tile = document.createElement('div');
-    tile.classList.add('tile');
-    tile.id = `$tile${i}`;
-    tiles.appendChild(tile);
-  }
-}
-
-
-// Add the event listener to the playBtn
 playBtn.addEventListener('click', () => {
   bigBombCount.style.display = 'none';
   mainBottom.style.visibility = 'hidden';
-  for (let i = 0; i < 25; i++) {
-    if (chances.length < 25 - setMineCount) {
-      chances.push(0);
-    } else {
-      chances.push(1111);
-    }
-  }
-  chances.sort((a, b) => 0.5 - Math.random());
   tile.forEach(element => {
     element.style.display = 'block';
   });
-  console.log(chances);
 });
 
 
@@ -58,21 +36,35 @@ btnMinusMines.addEventListener('click', () => {
     bigCount.textContent = setMineCount
   }
 })
+let tileCount = 0;
+let isntBomb;
+let isWin = false;
 
 tile.forEach(element => {
   element.addEventListener('click', () => {
     if (element.classList.contains('clicked')) return;
-    if (chances[0] == 1111) {
-      element.classList.add('ThisBomb');
-      chances.splice(chances[0], 1);
-    } else {
-      element.classList.add('notBomb');
-      chances.splice(chances[0], 1);
+    if (tileCount == 24 - setMineCount) {
+      tile.forEach(element => {
+        element.classList.remove('notBomb');
+        element.classList.remove('clicked');
+        element.classList.remove('thisBomb');
+        isWin = true;
+      })
     }
-    console.log(chances);
-    
-    chances.sort((a, b) => 0.5 - Math.random());
-    console.log(chances);
+    if (isntBomb || tileCount >= 25 - setMineCount) {
+    } else {
+      if (Math.random() <= 1 && isWin == false) {
+        element.classList.add('notBomb');
+        element.classList.add('clicked');
+        isntBomb = false;
+        tileCount++;
+        console.log(tileCount);
+      } else if (Math.random() >= 1 && isWin == false) {
+        element.classList.add('thisBomb');
+        element.classList.add('clicked');
+        isntBomb = true;
+      }    
+    }
     element.removeEventListener('click', tileClickHandler);
     
     function tileClickHandler() {
