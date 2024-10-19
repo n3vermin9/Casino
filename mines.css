@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+html {
+box-sizing: border-box;
+font-size: 16px;
+height: 100vh;
+}
+*, *:before, *:after {
+box-sizing: inherit;
+font-family: 'Poppins', sans-serif;
+font-weight: 400;
+-webkit-tap-highlight-color: transparent;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+outline: none !important;
+overflow: hidden;
+/* border: 1px solid red; */
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+margin: 0;
+padding: 0;
+}
+ol, ul {
+list-style: none;
+}
+img {
+max-width: 100%;
+height: auto;
+}
+
+body {
+  background: #212529;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 65px;
+  position: relative;
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+}
+
+.balance {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  color: green;
+}
+
+.balance::before {
+  content: "$";
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 320px;
+  height: 360px;
+}
+
+.coefficient {
+  width: 320px;
+  height: 40px;
+  background: #0d6efd;
+}
+
+
+.tiles {
+	display: grid;
+  justify-content: center;
+  align-items: center;
+	grid-template-rows: repeat(5, 1fr);
+	grid-template-columns: repeat(5, 1fr);
+	width: 320px;
+	height: 320px;
+  background: #031633;
+
+}
+
+
+.bigBombCount {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  /* border: 1px solid red; */
+	width: 320px;
+	height: 320px;
+  float: right;
+  color: white;
+}
+
+.bigBombCount * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid green; */
+  height: 50%;
+}
+
+.bigCount {
+  font-size: 140px;
+}
+
+.tile {
+  display: none;
+  width: 59px;
+  height: 59px;
+  background: #343a40;
+  /* border: 1px solid white; */
+  border-radius: 7%;
+  align-self: center;
+  justify-self: center;
+}
+
+.ThisBomb {
+  display: none;
+  width: 59px;
+  height: 59px;
+  background: #dc3545;
+  /* border: 1px solid white; */
+  border-radius: 7%;
+  align-self: center;
+  justify-self: center;
+}
+
+.notBomb {
+  display: none;
+  width: 59px;
+  height: 59px;
+  background: #28a745;
+  /* border: 1px solid white; */
+  border-radius: 7%;
+  align-self: center;
+  justify-self: center;
+}
+
+.main-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 36%;
+  width: 90%;
+  /* border: 1px solid red; */
+  gap: 10px;
+}
+
+
+.playBtn {
+  font-size: 40px;
+  width: 300px;
+  height: 70px;
+  padding: 5px;
+  border-radius: 11px;
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.bet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 130px;
+  /* border: 1px solid #000; */
+  width: 300px;
+  height: 70px;
+}
+
+.mainInput {
+  font-size: 40px;
+  width: 150px;
+  height: 70px;
+  padding: 5px;
+  border-radius: 11px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #ffffff60;
+}
+
+.betBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 16%;
+  border: none;
+  color: #f8f9fa;
+  
+}
+
+.btnMinus {
+  background: #dc3545;
+}
+
+.btnPlus {
+  background: #28a745;
+}
+
+
+
+.setMines {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  bottom: 130px;
+  width: fit-content;
+  gap: 10px;
+  height: 60px;
+  width: 90%;
+  /* border: 1px solid red; */
+}
+
+.minesBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 13%;
+  border: none;
+  color: #ffffff;
+  background: #6c757d;
+}
