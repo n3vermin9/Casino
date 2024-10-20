@@ -9,6 +9,7 @@ const btnMinusMines = document.querySelector('.btnMinusMines')
 
 
 let setMineCount = 3
+let coef = 0.8;
 
 bigCount.textContent = setMineCount
 
@@ -19,6 +20,7 @@ playBtn.addEventListener('click', () => {
   tile.forEach(element => {
     element.style.display = 'block';
   });
+  console.log(coef)
 });
 
 
@@ -27,6 +29,8 @@ btnPlusMines.addEventListener('click', () => {
   if (setMineCount < 24) {
     setMineCount++
     bigCount.textContent = setMineCount
+    coef -= 0.03
+    console.log(coef)
   }
 })
 
@@ -34,34 +38,43 @@ btnMinusMines.addEventListener('click', () => {
   if (setMineCount > 3) {
     setMineCount--
     bigCount.textContent = setMineCount
+    coef += 0.03
   }
 })
 let tileCount = 0;
 let isntBomb;
 let isWin = false;
+let winChance = Math.random()
+
 
 tile.forEach(element => {
   element.addEventListener('click', () => {
+    winChance = Math.random()
     if (element.classList.contains('clicked')) return;
+    console.log(tileCount)
     if (tileCount == 24 - setMineCount) {
       tile.forEach(element => {
-        element.classList.remove('notBomb');
-        element.classList.remove('clicked');
-        element.classList.remove('thisBomb');
         isWin = true;
+        tile.forEach(leftElem => {
+          if (!(leftElem.classList.contains('clicked'))) {
+            leftElem.classList.add('thisBomb')
+          }
+        });
       })
     }
     if (isntBomb || tileCount >= 25 - setMineCount) {
     } else {
-      if (Math.random() <= 1 && isWin == false) {
-        element.classList.add('notBomb');
-        element.classList.add('clicked');
+      if (winChance < coef && isWin == false) {
+        element.classList.add('notBomb', 'clicked');
         isntBomb = false;
         tileCount++;
-        console.log(tileCount);
-      } else if (Math.random() >= 1 && isWin == false) {
-        element.classList.add('thisBomb');
-        element.classList.add('clicked');
+      } else if (winChance > coef && isWin == false) {
+        element.classList.add('thisBomb', 'clicked');
+        tile.forEach(leftElem => {
+          if (!(leftElem.classList.contains('clicked'))) {   
+            leftElem.classList.add('thisBomb', 'clicked')
+          }
+        });
         isntBomb = true;
       }    
     }
@@ -71,3 +84,6 @@ tile.forEach(element => {
     }
   });
 });
+
+// убрать слоты при победе, показать победное окно, вернуть кнопку play,
+// убрать клики до следующего раунда

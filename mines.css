@@ -247,8 +247,8 @@ body {
   width: fit-content;
   gap: 10px;
   height: 60px;
-  width: 90%;
   /* border: 1px solid red; */
+  width: 300px;
 }
 
 .minesBtn {
