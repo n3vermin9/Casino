@@ -133,6 +133,7 @@ body {
 
 .tile {
   display: none;
+  opacity: .5;
   width: 59px;
   height: 59px;
   background: #343a40;
@@ -140,7 +141,16 @@ body {
   border-radius: 7%;
   align-self: center;
   justify-self: center;
+  animation: tileAppear 1s forwards;
+  -webkit-animation-play-state: paused;
 }
+
+@keyframes tileAppear {
+  100% {
+    opacity: 1;
+  }
+}
+
 
 .thisBomb {
   display: none;
@@ -189,6 +199,23 @@ body {
   bottom: 50px;
   text-transform: uppercase;
   letter-spacing: 3px;
+}
+
+.takeBtn {
+  font-size: 40px;
+  width: 300px;
+  height: 70px;
+  padding: 5px;
+  border-radius: 11px;
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  visibility: hidden;
+  position: absolute;
+  bottom: 200px;
 }
 
 @keyframes fade {
@@ -261,4 +288,35 @@ body {
   border: none;
   color: #ffffff;
   background: #6c757d;
+}
+
+.tile-diamond {
+  color: #007bff;
+}
+
+.tile-bomb {
+  color: #000;
+}
+
+
+.modal {
+  width: 320px;
+  height: 240px;
+  background: #000;
+  border-radius: 5%;
+  z-index: 3;
+  position: absolute;
+  visibility: hidden;
+  
+}
+
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  z-index: 2;
 }
