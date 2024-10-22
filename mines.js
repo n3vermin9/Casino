@@ -1,5 +1,6 @@
 const tiles = document.querySelector('.tiles')
 const tile = document.querySelectorAll('.tile')
+const balance = document.querySelector('.balance')
 const playBtn = document.querySelector('.playBtn')
 const bigCount = document.querySelector('.bigCount')
 const bigBombCount = document.querySelector('.bigBombCount')
@@ -7,22 +8,58 @@ const mainBottom = document.querySelector('.main-bottom')
 const btnPlusMines = document.querySelector('.btnPlusMines')
 const btnMinusMines = document.querySelector('.btnMinusMines')
 const takeBtn = document.querySelector('.takeBtn')
-
+const btnPlus = document.querySelector('.btnPlus')
+const btnMinus = document.querySelector('.btnMinus')
+const mainInput = document.querySelector('.mainInput')
+const coefficientPlace = document.querySelector('.coefficient')
 
 let setMineCount = 3
 let coef = 0.8;
+let multiple = [1.3, 1.6, 2, 2.68, 2.9, 3.1, 3.8, 4.3, 5, 5.6, 6, 6.9, 7.3, 8, 8.8, 9.3, 10, 11.2, 12.5, 13.3, 14.5, 15.4, 16.7, 18, 20]
+
+let currentMultiply = document.createElement('div')
+currentMultiply.className = 'greenMultiply'
+
+coefficientPlace.appendChild(currentMultiply)
+
+currentMultiply.innerText = `x${multiple[0]}`
+
 
 bigCount.textContent = setMineCount
 
+window.addEventListener('storage', event => {
+  balance.innerText = localStorage.getItem('balance')
+})
+
+let balanceValue;
+function init() {
+  const localStorageKey = 'balance'; // Ключ для хранения значения в localStorage
+
+  if (typeof(Storage) !== "undefined") {
+      balanceValue = localStorage.getItem(localStorageKey);
+      balance.innerHTML += balanceValue; // Вставляем значение в innerText элемента
+  } else {
+      console.error("Local Storage не поддерживается");
+  }
+}
+
+init()
+
 
 playBtn.addEventListener('click', () => {
-  bigBombCount.style.display = 'none';
-  mainBottom.style.visibility = 'hidden';
-  takeBtn.style.visibility = 'visible'
-  tile.forEach(element => {
-    element.style.display = 'block';
-  });
-  console.log(coef)
+if (mainInput.innerText != '$000' && localStorage.getItem('balance') > 0 && localStorage.getItem('balance') >= inputBet) {
+    bigBombCount.style.display = 'none';
+    mainBottom.style.visibility = 'hidden';
+    takeBtn.style.visibility = 'visible'
+    tile.forEach(element => {
+      element.style.display = 'block';
+    });
+    if (inputBet > 0) {
+      let balanceRes = balanceValue -= inputBet
+      localStorage.setItem('balance', `${balanceRes}`)
+      balance.innerText = localStorage.getItem('balance')
+    }
+}
 });
 
 
@@ -32,7 +69,7 @@ btnPlusMines.addEventListener('click', () => {
     setMineCount++
     bigCount.textContent = setMineCount
     coef -= 0.03
-    console.log(coef)
+    currentMultiply.innerText = `x${multiple[setMineCount - 3]}`
   }
 })
 
@@ -41,6 +78,7 @@ btnMinusMines.addEventListener('click', () => {
     setMineCount--
     bigCount.textContent = setMineCount
     coef += 0.03
+    currentMultiply.innerText = `x${multiple[setMineCount - 3]}`
   }
 })
 let tileCount = 0;
@@ -100,9 +138,37 @@ takeBtn.addEventListener('click', ()=> {
 })
 
 
+let inputBet = 0
+
+btnPlus.addEventListener('click', () => {
+  if (inputBet != localStorage.getItem('balance')) {
+    inputBet += 50;
+    mainInput.innerText = inputBet;
+    mainInput.innerText = '$' + mainInput.innerText;
+  }
+  if (mainInput.innerText != '$000') {
+    mainInput.style.color = 'white';
+  }
+})
+  
+btnMinus.addEventListener('click', () => {
+  if (inputBet > 0) {
+    inputBet -= 50;
+    mainInput.innerText = inputBet;
+    mainInput.innerText = '$' + mainInput.innerText;
+  }
+  if (inputBet === 0) {
+    mainInput.innerText = '$000'
+  }
+  if (mainInput.innerText == '$000') {
+    mainInput.style.color = '#ffffff50';
+  }
+})
+
+
+
+
+
 
 //показать победное окно, вернуть кнопку play
-
-
-
 //сделать мультиплаер ставки, меню коэфов, локалстореж

@@ -90,6 +90,20 @@ body {
   width: 320px;
   height: 40px;
   background: #0d6efd;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.greenMultiply {
+  width: 17%;
+  height: 100%;
+  background: #28a745;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 }
 
 
@@ -241,7 +255,7 @@ body {
   border-radius: 11px;
   border: 1px solid #ccc;
   text-align: center;
-  color: #ffffff60;
+  color: #ffffff50;
 }
 
 .betBtn {
